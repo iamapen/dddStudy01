@@ -1,5 +1,11 @@
 {
     "require-dev": {
         "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "Acme\\Shop\\": "Shop/",
+          "Acme\\Shop\\TestCase\\": "unittest/lib/TestCase"
+        }
     }
 }

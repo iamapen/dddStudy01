@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<phpunit>
+  <testsuites>
+    <testsuite name="all">
+      <directory suffix="Test.php">./unittest/tests</directory>
+    </testsuite>
+  </testsuites>
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">./Shop</directory>
+    </whitelist>
+  </filter>
+
+  <php>
+    <!--
+    <const name="UNITTEST_MYSQL_DSN" value="mysql:host=127.0.0.1;dbname=dddStudy01;port=3306"/>
+    <const name="UNITTEST_MYSQL_USERNAME" value="dbuser"/>
+    <const name="UNITTEST_MYSQL_PASSWORD" value="dbpass"/>
+    -->
+  </php>
+</phpunit>
+
