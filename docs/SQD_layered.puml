@@ -1,0 +1,19 @@
+@startuml
+title Layered Architecture
+
+actor user
+participant "UI\n(Req/Res, view)" as UI
+participant "Application\n(Route, Controller, UseCase)" as Application
+participant "Domain\n(model, service, event...)" as Domain
+participant "Infrastructure\n(repository, cache, apiClient, ORM)" as Infra
+actor "upstream\n(RDB, API, SMTP)" as upstream
+
+user -> UI: HTTP/JSON/STDIN
+UI -> Application:
+Application -> Domain: 具体的な処理は移譲
+Domain -> Infra:
+Infra -> upstream:
+
+
+user <-- UI: HTTP/HTML/JSON/STDOUT
+@enduml
