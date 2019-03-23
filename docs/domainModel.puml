@@ -1,0 +1,22 @@
+@startuml
+title ドメインモデル図 (概念モデル図)
+
+'left to right direction
+hide circle
+hide method
+
+package DomainModel {
+  mix_actor User
+  class Cart #ffcccc
+  class Item {
+    - id
+    - name
+    - price
+  }
+}
+
+User -> Cart
+Cart o- Item
+
+
+@enduml

@@ -1,0 +1,49 @@
+@startuml
+
+class Item {
+  ItemId id
+  ItemName name
+  ItemPrice price
+  ItemStock stock
+}
+class ItemId
+class ItemName
+class ItemPrice
+class ItemStock
+ItemId --o Item
+ItemName --o Item
+ItemPrice --o Item
+ItemStock --o Item
+
+class Cart {
+  - CartElement[] elements
+  - CartTotalCount count
+  - CartTotalPrice price
+  + addItem(Item, ItemCount)
+  + count(): CartTotalCount
+  + price(): CartTotalPrice
+  + clear()
+  + removeItem(ItemId id)
+  + updateItemcount(ItemId id, ItemCount count)
+  + findItem(ItemId id): ?CartElement
+  + elements(): CartElement[]
+}
+class CartElement {
+  Item item
+  ItemCount count
+  price(): ItemSubtotal
+  updateCount(ItemCount count)
+  addCount(ItemCount count)
+  match(ItemId itemId): bool
+}
+class ItemCount
+class CartTotalCount
+class CartTotalPrice
+
+ItemCount --o CartElement
+Item -o CartElement
+CartElement -o Cart
+CartTotalCount --o Cart
+CartTotalPrice --o Cart
+
+@enduml
