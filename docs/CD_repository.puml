@@ -1,0 +1,31 @@
+@startuml
+
+package "Domain Layer" {
+  class Serviceなど
+  interface ItemRepository {
+    + findById(ItemId $id): Item
+  }
+}
+Serviceなど -> ItemRepository
+
+package "Infra Layer" {
+  class "ItemDao(仮)" as ItemDao {
+    - PDO
+    + findById(ItemId $id): Item
+  }
+
+  class EloquentItemRepository {
+    - eloquent
+    + findById(ItemId id): Item
+  }
+  class EloquentItem
+}
+ItemRepository <|.. ItemDao
+
+ItemRepository <|.. EloquentItemRepository
+EloquentItemRepository -> EloquentItem
+
+note bottom of ItemDao: PDOによる実装の例
+note right of EloquentItemRepository: Eloquentによる実装の例
+
+@enduml
