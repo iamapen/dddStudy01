@@ -8,5 +8,8 @@
           "Acme\\Shop\\": "Shop/",
           "Acme\\Shop\\TestCase\\": "unittest/lib/TestCase"
         }
+    },
+    "require": {
+        "illuminate/support": "^5.5"
     }
 }
