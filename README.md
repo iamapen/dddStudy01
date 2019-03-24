@@ -11,10 +11,9 @@
 php unittest/testRecordImport.php
 ```
 5. シミュレーション実行する  
-web-api は未作成だが、usecase はHTTPに依存していないのでCLIから実行できる。  
-将来的に web-api を実装する場合も、APIからusecaseを呼ぶだけで実現できる。
+web-api は未作成なので、CLIからusecaseを実行するものを用意してある。
 ```bash
-php Shop/Application/Cli/testRun.php
+php testRun.php
 ```
 
 ## ディレクトリ構成
@@ -23,8 +22,6 @@ php Shop/Application/Cli/testRun.php
 ```
 Shop/
  |- Application/                Application層
- |   |- Cli/
- |   |   |- testRun.php           CLIからの実行用ランナ
  |   |- UseCases/                 usecase群
  |   |   |- AddItemToCart.php      「カートに入れる」usecase
  |- Domain/                     Domain層
@@ -35,6 +32,7 @@ Shop/
  |- Infrastructure/             Infra層
  |   |- Repositories/             Repository群
  |   |   |- Domain/
+testRun.php                     CLIからの実行用ランナ
 ```
 
 ### 非プロダクトコード
