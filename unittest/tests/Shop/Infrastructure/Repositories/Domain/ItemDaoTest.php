@@ -5,7 +5,7 @@ use Acme\Shop\Infrastructure\Repositories\Domain\ItemDao;
 use Acme\Shop\Domain\Models\Item\ItemId;
 use Acme\Shop\Domain\Models\Item\Item;
 
-class ItemDaoTest extends \Acme\Shop\TestCase\AppDbTestCase
+class ItemDaoTest extends \Acme\Shop\Test\TestCase\AppDbTestCase
 {
     protected function getDataSet()
     {

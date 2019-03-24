@@ -4,7 +4,7 @@ declare(strict_types=1);
 use Acme\Shop\Domain\Models\Cart\CartTotalCount;
 use Acme\Shop\Domain\Models\Item\ItemCount;
 
-class CartTotalCountTest extends \Acme\Shop\TestCase\PositiveNumberTest
+class CartTotalCountTest extends \Acme\Shop\Test\TestCase\PositiveNumberTestCase
 {
     protected static $sutClassName = CartTotalCount::class;
 

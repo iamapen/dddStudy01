@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Acme\Shop\TestCase;
+namespace Acme\Shop\Test\TestCase;
 
 abstract class AppDbTestCase extends \PHPUnit\DbUnit\TestCase {
     protected function getConnection()

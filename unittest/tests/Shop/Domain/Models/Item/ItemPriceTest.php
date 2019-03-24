@@ -5,7 +5,7 @@ use Acme\Shop\Domain\Models\Item\ItemPrice;
 use Acme\Shop\Domain\Models\Item\ItemCount;
 use Acme\Shop\Domain\Models\Item\ItemSubtotal;
 
-class ItemPriceTest extends \Acme\Shop\TestCase\PositiveNumberTest
+class ItemPriceTest extends \Acme\Shop\Test\TestCase\PositiveNumberTestCase
 {
     protected static $sutClassName = ItemPrice::class;
 

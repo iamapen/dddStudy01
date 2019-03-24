@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Acme\Shop\Domain\Models\Item\ItemCount;
 
-class ItemCountTest extends \Acme\Shop\TestCase\PositiveNumberTest
+class ItemCountTest extends \Acme\Shop\Test\TestCase\PositiveNumberTestCase
 {
     protected static $sutClassName = ItemCount::class;
 

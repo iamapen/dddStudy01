@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Acme\Shop\TestCase;
+namespace Acme\Shop\Test\TestCase;
 
 use Acme\Shop\Domain\Models\Identifier;
 
-abstract class IdentifierTest extends \PHPUnit\Framework\TestCase
+abstract class IdentifierTestCase extends \PHPUnit\Framework\TestCase
 {
     protected static $sutClassName;
 

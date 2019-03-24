@@ -6,7 +6,6 @@
     "autoload": {
         "psr-4": {
           "Acme\\Shop\\": "Shop/",
-          "Acme\\Shop\\TestCase\\": "unittest/lib/TestCase/",
           "Acme\\Shop\\Test\\": "unittest/lib/"
         }
     },

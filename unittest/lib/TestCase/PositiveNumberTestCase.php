@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Acme\Shop\TestCase;
+namespace Acme\Shop\Test\TestCase;
 
 use Acme\Shop\Domain\Models\PositiveNumber;
 use Acme\Shop\Domain\Exceptions\InvariantException;
 
-abstract class PositiveNumberTest extends \PHPUnit\Framework\TestCase
+abstract class PositiveNumberTestCase extends \PHPUnit\Framework\TestCase
 {
     protected static $sutClassName;
 
