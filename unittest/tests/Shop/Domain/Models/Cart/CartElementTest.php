@@ -7,18 +7,11 @@ use Acme\Shop\Domain\Models\Item\Item;
 
 class CartElementTest extends \PHPUnit\Framework\TestCase
 {
-    function makeItem()
-    {
-        $itemId = \Acme\Shop\Domain\Models\Item\ItemId::of(1);
-        $itemName = 'item02';
-        $itemPrice = \Acme\Shop\Domain\Models\Item\ItemPrice::of(500);
-        $itemStock = \Acme\Shop\Domain\Models\Item\Stock::of(3);
-        return new Item($itemId, $itemName, $itemPrice, $itemStock);
-    }
+    use \Acme\Shop\Test\Faker\FakeItem;
 
     function testConstructor()
     {
-        $item = $this->makeItem();
+        $item = $this->fakeItem();
         $itemCount = ItemCount::of(2);
         $sut = new CartElement($item, $itemCount);
 
@@ -30,7 +23,7 @@ class CartElementTest extends \PHPUnit\Framework\TestCase
 
     function testPrice()
     {
-        $item = $this->makeItem();
+        $item = $this->fakeItem();
         $itemCount = ItemCount::of(2);
         $sut = new CartElement($item, $itemCount);
 
@@ -41,7 +34,7 @@ class CartElementTest extends \PHPUnit\Framework\TestCase
 
     function testUpdateCount()
     {
-        $item = $this->makeItem();
+        $item = $this->fakeItem();
         $itemCount = ItemCount::of(2);
         $sut = new CartElement($item, $itemCount);
 
@@ -52,7 +45,7 @@ class CartElementTest extends \PHPUnit\Framework\TestCase
 
     function testAddCount()
     {
-        $item = $this->makeItem();
+        $item = $this->fakeItem();
         $itemCount = ItemCount::of(2);
         $sut = new CartElement($item, $itemCount);
 
@@ -63,7 +56,7 @@ class CartElementTest extends \PHPUnit\Framework\TestCase
 
     function testMatch()
     {
-        $item = $this->makeItem();
+        $item = $this->fakeItem();
         $itemCount = ItemCount::of(2);
 
         $sut = new CartElement($item, $itemCount);

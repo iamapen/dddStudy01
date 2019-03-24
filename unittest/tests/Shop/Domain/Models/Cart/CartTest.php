@@ -8,17 +8,10 @@ use Acme\Shop\Domain\Models\Item\Item;
 
 class CartTest extends \PHPUnit\Framework\TestCase
 {
-    function makeItem()
-    {
-        $itemId = \Acme\Shop\Domain\Models\Item\ItemId::of(1);
-        $itemName = 'item02';
-        $itemPrice = \Acme\Shop\Domain\Models\Item\ItemPrice::of(500);
-        $itemStock = \Acme\Shop\Domain\Models\Item\Stock::of(3);
-        return new Item($itemId, $itemName, $itemPrice, $itemStock);
-    }
+    use \Acme\Shop\Test\Faker\FakeItem;
 
-    function makeElement() {
-        $item = $this->makeItem();
+    function fakeElement() {
+        $item = $this->fakeItem();
         $itemCount = ItemCount::of(2);
         return new CartElement($item, $itemCount);
     }
@@ -35,11 +28,11 @@ class CartTest extends \PHPUnit\Framework\TestCase
         $this->assertSame(0, $cart->count()->value());
         $this->assertSame(0, $cart->price()->value());
 
-        $cart->addItem($this->makeItem(), ItemCount::of(2));
+        $cart->addItem($this->fakeItem(), ItemCount::of(2));
         $this->assertSame(2, $cart->count()->value());
         $this->assertSame(1000, $cart->price()->value());
 
-        $cart->addItem($this->makeItem(), ItemCount::of(1));
+        $cart->addItem($this->fakeItem(), ItemCount::of(1));
         $this->assertSame(3, $cart->count()->value());
         $this->assertSame(1500, $cart->price()->value());
     }
@@ -48,7 +41,7 @@ class CartTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\Acme\Shop\Domain\Exceptions\InvariantException::class);
         $this->expectExceptionMessage('stock is insufficient');
         $cart = new Cart();
-        $cart->addItem($this->makeItem(), ItemCount::of(4));
+        $cart->addItem($this->fakeItem(), ItemCount::of(4));
     }
 
     function testRemoveItem() {
@@ -56,7 +49,7 @@ class CartTest extends \PHPUnit\Framework\TestCase
         $this->assertSame(0, $cart->count()->value());
         $this->assertSame(0, $cart->price()->value());
 
-        $cart->addItem($this->makeItem(), ItemCount::of(2));
+        $cart->addItem($this->fakeItem(), ItemCount::of(2));
         $this->assertSame(2, $cart->count()->value());
         $this->assertSame(1000, $cart->price()->value());
 
@@ -71,7 +64,7 @@ class CartTest extends \PHPUnit\Framework\TestCase
 
     function testUpdateItemCount() {
         $cart = new Cart();
-        $cart->addItem($this->makeItem(), ItemCount::of(2));
+        $cart->addItem($this->fakeItem(), ItemCount::of(2));
         $this->assertSame(2, $cart->count()->value());
         $this->assertSame(1000, $cart->price()->value());
 
@@ -85,7 +78,7 @@ class CartTest extends \PHPUnit\Framework\TestCase
         $this->expectExceptionMessage('Item 5 is not found');
 
         $cart = new Cart();
-        $cart->addItem($this->makeItem(), ItemCount::of(2));
+        $cart->addItem($this->fakeItem(), ItemCount::of(2));
         $this->assertSame(2, $cart->count()->value());
         $this->assertSame(1000, $cart->price()->value());
 
@@ -99,7 +92,7 @@ class CartTest extends \PHPUnit\Framework\TestCase
         $this->assertSame(0, $cart->count()->value());
         $this->assertSame(0, $cart->price()->value());
 
-        $cart->addItem($this->makeItem(), ItemCount::of(2));
+        $cart->addItem($this->fakeItem(), ItemCount::of(2));
         $this->assertSame(2, $cart->count()->value());
         $this->assertSame(1000, $cart->price()->value());
 
@@ -110,7 +103,7 @@ class CartTest extends \PHPUnit\Framework\TestCase
 
     function testElements() {
         $cart = new Cart();
-        $item = $this->makeItem();
+        $item = $this->fakeItem();
         $itemCount = ItemCount::of(2);
         $cart->addItem($item, $itemCount);
 
