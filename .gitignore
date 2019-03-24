@@ -1,2 +1,6 @@
 vendor
 phpunit.xml
+
+/_build/*
+!/_build/.gitkeep
+
