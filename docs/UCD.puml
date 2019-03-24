@@ -1,0 +1,16 @@
+@startuml
+title ユースケース
+
+actor User
+
+rectangle ショップ {
+  package カート {
+    (商品をカートに追加する) #ffcccc
+    (カートの内容を表示する)
+    (カートの内容を変更する)
+  }
+}
+
+User - ショップ
+
+@enduml
